@@ -4,6 +4,13 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const PREFIX = "$";
 
+(function wakeup() {
+  require('open')('https://otterbot-1.herokuapp.com/', (err) => {
+    if (err) throw err;
+    console.log('Woke up!');
+    setTimeout(wakeup, 1740000); //29m
+  });
+})()
 
 client.on('ready', () => {
   console.log('I am online!');
@@ -18,8 +25,7 @@ client.on('guildMemberAdd', member => {
 
 client.on('message', async (message) => {
   if (message.author.bot) return;
-  message.reply("Hello");
-  /*if (message.content.startsWith(PREFIX)){
+  if (message.content.startsWith(PREFIX)){
     const [CMD_NAME, ...args] = message.content
       .trim()
       .substring(PREFIX.length)
@@ -55,9 +61,8 @@ client.on('message', async (message) => {
         message.channel.send("User was not found!");
       } 
     } 
- 
+
   }
-  */
 });
 
 
