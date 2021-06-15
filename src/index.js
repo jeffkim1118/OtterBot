@@ -18,7 +18,8 @@ client.on('guildMemberAdd', member => {
 
 client.on('message', async (message) => {
   if (message.author.bot) return;
-  if (message.content.startsWith(PREFIX)){
+  message.reply("Hello");
+  /*if (message.content.startsWith(PREFIX)){
     const [CMD_NAME, ...args] = message.content
       .trim()
       .substring(PREFIX.length)
@@ -54,8 +55,9 @@ client.on('message', async (message) => {
         message.channel.send("User was not found!");
       } 
     } 
-
+ 
   }
+  */
 });
 
 
