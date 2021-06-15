@@ -24,7 +24,7 @@ client.on('message', async (message) => {
       .substring(PREFIX.length)
       .split(/\s+/);  
 
-    if(CMD_NAME === "ping") return message.reply('pong!');
+    if(CMD_NAME === "ping") {return message.reply('pong!')};
 
     if(CMD_NAME === "kick"){
       if (!message.member.hasPermission('KICK_MEMBERS'))
