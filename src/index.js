@@ -1,12 +1,10 @@
 require("dotenv").config();
 
+
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const PREFIX = "$";
 
-app.get('/',(req,res) => {
-  return res.send('Hello');
-  });
 
 client.on('ready', () => {
   console.log('I am online!');
@@ -17,7 +15,6 @@ client.on('guildMemberAdd', member => {
   if (!channel) return;
   channel.send(`welcome to the Otter's server, ${member}`);
 });
-
 
 client.on('message', async (message) => {
   if (message.author.bot) return;
@@ -60,6 +57,5 @@ client.on('message', async (message) => {
 
   }
 });
-
-
 client.login(process.env.TOKEN);
+require('./keep-alive');
