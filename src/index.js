@@ -1,17 +1,12 @@
 require("dotenv").config();
-const open = require('open');
 
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const PREFIX = "$";
 
-(function wakeup() {
-  require('open')('https://otterbot-1.herokuapp.com/', (err) => {
-    if (err) throw err;
-    console.log('Woke up!');
-    setTimeout(wakeup, 1000); //29m
+app.get('/',(req,res) => {
+  return res.send('Hello');
   });
-})()
 
 client.on('ready', () => {
   console.log('I am online!');
