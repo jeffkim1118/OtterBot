@@ -2,7 +2,7 @@ const puppeteer = require('puppeteer');
 
 async function scrapeDoge(url){
     const browser = await puppeteer.launch({
-        headless: false,
+        headless: true,
     });
     const page = await browser.newPage();
     await page.goto(url);
@@ -11,9 +11,9 @@ async function scrapeDoge(url){
     const doge = await el.getProperty('textContent');
     const dogePrice = await doge.jsonValue();
 
-    console.log(dogePrice);
     browser.close();
 
     return dogePrice;
 }
-scrapeDoge('https://finance.yahoo.com/quote/DOGE-USD?p=DOGE-USD&.tsrc=fin-srch');
+
+module.exports = scrapeDoge;

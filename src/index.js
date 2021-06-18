@@ -1,5 +1,5 @@
 require("dotenv").config();
-require('./scrape');
+const Doge = require('./scrape');
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const PREFIX = "$";
@@ -27,8 +27,9 @@ client.on('message', async (message) => {
       return message.reply('pong!')};
 
     if(CMD_NAME === "doge"){
-      let price = scrapeDoge();
-      message.channel.send(price);
+      message.channel.send('Searching for dogecoin price...');
+      let price = await Doge('https://finance.yahoo.com/quote/DOGE-USD?p=DOGE-USD&.tsrc=fin-srch');
+      message.reply('The current Dogecoin price is $' + price);
     };
 
     if(CMD_NAME === "kick"){
