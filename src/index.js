@@ -1,5 +1,4 @@
 require("dotenv").config();
-require('./keep-alive');
 const Doge = require('./scrape');
 const Discord = require('discord.js');
 const client = new Discord.Client();
@@ -64,3 +63,4 @@ client.on('message', async (message) => {
   }
 });
 client.login(process.env.TOKEN);
+require('./keep-alive');
