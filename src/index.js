@@ -1,6 +1,5 @@
 require("dotenv").config();
-
-
+require('./scrape');
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const PREFIX = "$";
@@ -26,6 +25,11 @@ client.on('message', async (message) => {
 
     if(CMD_NAME === "ping"){
       return message.reply('pong!')};
+
+    if(CMD_NAME === "doge"){
+      let price = scrapeDoge();
+      message.channel.send(price);
+    };
 
     if(CMD_NAME === "kick"){
       if (!message.member.hasPermission('KICK_MEMBERS'))
