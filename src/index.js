@@ -1,6 +1,6 @@
 require("dotenv").config();
-const Doge = require('./scrape');
 require('./keep-alive');
+const Doge = require('./scrape');
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const PREFIX = "$";
