@@ -11,9 +11,14 @@ async function scrapeDoge(url){
     const doge = await el.getProperty('textContent');
     const dogePrice = await doge.jsonValue();
 
+    const [el2] = await page.$x('//*[@id="quote-header-info"]/div[3]/div[1]/div/span[2]');
+    const doge2 = await el2.getProperty('textContent');
+    const dogeChange = await doge2.jsonValue();
+
+
     browser.close();
 
-    return dogePrice;
+    return [dogePrice, dogeChange];
 }
 
 module.exports = scrapeDoge;

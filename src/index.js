@@ -7,7 +7,7 @@ const PREFIX = "$";
 
 client.on('ready', () => {
   console.log('I am online!');
-  client.channels.cache.get('855623780793057291').send('OtterBot Online (OtterBot이 활성화 됬습니다).')
+  /* client.channels.cache.get('855623780793057291').send('OtterBot Online (OtterBot이 활성화 됬습니다).') */
 });
 
 client.on('guildMemberAdd', member => {
@@ -27,21 +27,19 @@ client.on('message', async (message) => {
     if(CMD_NAME === "pog"){
       return message.reply('champ')};
 
+    
     if(CMD_NAME === "doge"){
-      /* message.channel.send('Searching for dogecoin price...'); */
-      /* let price = await Doge('https://finance.yahoo.com/quote/DOGE-USD?p=DOGE-USD&.tsrc=fin-srch'); */
       var interval = setInterval(async () => {
-        let price = await Doge('https://finance.yahoo.com/quote/DOGE-USD?p=DOGE-USD&.tsrc=fin-srch');
+        let data = await Doge('https://finance.yahoo.com/quote/DOGE-USD?p=DOGE-USD&.tsrc=fin-srch');
           const embedPrice = new Discord.MessageEmbed()
               .setColor('#0099ff')
               .setTitle('DogeCoin')
-              .setThumbnail('')
-              .addFields({ name: 'Price', value: '$' + price},)
+              .setThumbnail('https://upload.wikimedia.org/wikipedia/en/d/d0/Dogecoin_Logo.png')
+              .addFields({ name: 'Price per share', value: '$' + data[0]},{name: 'Change', value: '$' + data[1]})
           message.channel.send(embedPrice)}, 30 * 1000)
-      } else if (CMD_NAME === "dogestop") {
+      }if (CMD_NAME === "dogestop") {
         clearInterval(interval);
       };
-    
     
 
     if(CMD_NAME === "kick"){
